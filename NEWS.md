@@ -2,6 +2,8 @@
 
 ## BUG FIXES
 
+- `datatable()` now gains a new param `na_inf` to control the printing values of `NA` or `Inf`. (thanks, @shrektan, #513 #496)
+
 - `styleInterval()` and `styleEqual()` now generates the correct callback for `Date` and `Datetime` values. (thanks, @shrektan, #500, #495)
 
 # CHANGES IN DT VERSION 0.4
