@@ -75,6 +75,7 @@ renderDataTable = function(expr, server = TRUE, env = parent.frame(), quoted = F
       }
 
       origData = instance[['x']][['data']]
+      attr(origData, "TOJSON_ARGS") = attr(instance$x, "TOJSON_ARGS")
       instance$x$data = NULL
 
       # register the data object in a shiny session
@@ -379,7 +380,9 @@ sessionDataURL = function(session, data, id, filter) {
     res = tryCatch(filter(data, params), error = function(e) {
       list(error = as.character(e))
     })
-    httpResponse(200, 'application/json', enc2utf8(toJSON(res, dataframe = 'rows')))
+
+    jsonArgs = c(list(x = res, dataframe = 'rows'), attr(data, "TOJSON_ARGS", exact = TRUE))
+    httpResponse(200, 'application/json', enc2utf8(do.call(toJSON, jsonArgs)))
   }
 
   session$registerDataObj(id, data, filterFun)
