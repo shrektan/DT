@@ -97,8 +97,8 @@ extensions (\url{https://datatables.net/extensions/index})}
 
 \item{editable}{\code{TRUE} to enable table editor.}
 
-\item{na_inf}{how to print \code{NA} or \code{Inf} values, must be one of
-"null" or "string". See the \code{na} param in \code{\link[jsonlite]{toJSON}}.}
+\item{na_inf}{controls the printing values of \code{NA} and \code{Inf}.
+Must be one of "null" or "string".}
 }
 \description{
 This function creates an HTML widget to display rectangular data (a matrix or

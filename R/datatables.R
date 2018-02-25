@@ -67,8 +67,8 @@
 #' @param plugins a character vector of the names of DataTables plug-ins
 #'   (\url{https://rstudio.github.io/DT/plugins.html})
 #' @param editable \code{TRUE} to enable table editor.
-#' @param na_inf how to print \code{NA} or \code{Inf} values, must be one of
-#'   "null" or "string". See the \code{na} param in \code{\link[jsonlite]{toJSON}}.
+#' @param na_inf  controls the printing values of \code{NA} and \code{Inf}.
+#'   Must be one of "null" or "string".
 #' @note You are recommended to escape the table content for security reasons
 #'   (e.g. XSS attacks) when using this function in Shiny or any other dynamic
 #'   web applications.
