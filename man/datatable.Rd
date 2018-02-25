@@ -10,7 +10,7 @@ datatable(data, options = list(), class = "display", callback = JS("return table
     height = NULL, elementId = NULL, fillContainer = getOption("DT.fillContainer", 
         NULL), autoHideNavigation = getOption("DT.autoHideNavigation", 
         NULL), selection = c("multiple", "single", "none"), extensions = list(), 
-    plugins = NULL, editable = FALSE)
+    plugins = NULL, editable = FALSE, na_inf = c("null", "string"))
 }
 \arguments{
 \item{data}{a data object (either a matrix or a data frame)}
@@ -96,6 +96,9 @@ extensions (\url{https://datatables.net/extensions/index})}
 (\url{https://rstudio.github.io/DT/plugins.html})}
 
 \item{editable}{\code{TRUE} to enable table editor.}
+
+\item{na_inf}{how to print \code{NA} or \code{Inf} values, must be one of
+"null" or "string". See the \code{na} param in \code{\link[jsonlite]{toJSON}}.}
 }
 \description{
 This function creates an HTML widget to display rectangular data (a matrix or
