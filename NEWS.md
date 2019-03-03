@@ -8,6 +8,8 @@
 
 - Fix issue where `replaceData()` didn't work when used in Shiny modules. (Thanks, @donarus, #628, #626)
 
+- Added `filter` to `DT::renderDT()` to avoid the partial matching with `filterFunc` (thanks, @shrektan, #639 #641).
+
 # CHANGES IN DT VERSION 0.5
 
 ## NEW FEATURES

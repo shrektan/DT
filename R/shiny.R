@@ -49,12 +49,12 @@ DTOutput = dataTableOutput
 #'   browsers to slow down or crash.
 #' @param filterFunc (for expert use only) passed to the \code{filter} argument
 #'   of \code{\link{dataTableAjax}()}
-#' @param ... ignored when \code{expr} returns a table widget, and passed as
+#' @param filter,... ignored when \code{expr} returns a table widget, and passed as
 #'   additional arguments to \code{datatable()} when \code{expr} returns a data
 #'   object
 renderDataTable = function(
     expr, server = TRUE, env = parent.frame(), quoted = FALSE,
-    filterFunc = dataTablesFilter, ...
+    filterFunc = dataTablesFilter, filter, ...
   ) {
   if (!quoted) expr = substitute(expr)
 
@@ -86,10 +86,14 @@ renderDataTable = function(
       processWidget(instance)
     }
   }
+
+  args <- list(...)
+  if (!missing(filter)) args$filter <- filter
+
   processWidget = function(instance) {
     if (!all(c('datatables', 'htmlwidget') %in% class(instance))) {
-      instance = datatable(instance, ...)
-    } else if (length(list(...)) != 0) {
+      instance = do.call(datatable, c(list(instance), args))
+    } else if (length(args) != 0) {
       warning("renderDataTable ignores ... arguments when expr yields a datatable object; see ?renderDataTable")
     }
 

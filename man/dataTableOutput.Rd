@@ -12,10 +12,10 @@ dataTableOutput(outputId, width = "100\%", height = "auto")
 DTOutput(outputId, width = "100\%", height = "auto")
 
 renderDataTable(expr, server = TRUE, env = parent.frame(), quoted = FALSE, 
-    filterFunc = dataTablesFilter, ...)
+    filterFunc = dataTablesFilter, filter, ...)
 
 renderDT(expr, server = TRUE, env = parent.frame(), quoted = FALSE, 
-    filterFunc = dataTablesFilter, ...)
+    filterFunc = dataTablesFilter, filter, ...)
 }
 \arguments{
 \item{outputId}{output variable to read the table from}
@@ -42,7 +42,7 @@ is useful if you want to save an expression in a variable.}
 \item{filterFunc}{(for expert use only) passed to the \code{filter} argument
 of \code{\link{dataTableAjax}()}}
 
-\item{...}{ignored when \code{expr} returns a table widget, and passed as
+\item{filter, ...}{ignored when \code{expr} returns a table widget, and passed as
 additional arguments to \code{datatable()} when \code{expr} returns a data
 object}
 }
